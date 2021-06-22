@@ -9,7 +9,7 @@ body{margin: 0; opacity: .4;}
 
 .container{
 /* On s'assure que le "container"
-   fais bien toute la largeur et
+   fasse bien toute la largeur et
    toute la hauteur de la page */
     width: 100%;
     height: 100vh;
