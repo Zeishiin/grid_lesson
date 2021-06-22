@@ -1,0 +1,60 @@
+body{margin: 0;}
+
+.container{
+    width:100%;
+    height:100vh;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100%;
+
+    grid-template-areas: 
+    "gauche milieu droite"
+    ;
+}
+.gauche{
+    grid-area: gauche;
+    background: blue;
+}
+.gauche > div{
+    font-size: 2em;
+    margin: 1em;
+}
+.milieu{
+    grid-area: milieu;
+
+    display: grid;
+
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, 1fr);
+}
+.milieu__un{
+    background:pink;
+    font-size: 1.5em;
+    padding: .75em;
+}
+
+.milieu__deux{
+    background: turquoise;
+    opacity: .4;
+}
+.droite{
+    grid-area: droite;
+    background: green;
+    opacity: .4;
+}
+
+
+/* TABLET */
+@media (max-width:1024px){
+    .container{
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 80% 10%;
+
+        grid-template-areas: 
+        "gauche"
+        "milieu"
+        "droite";
+    }
+}
