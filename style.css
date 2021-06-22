@@ -1,0 +1,77 @@
+body{margin: 0; opacity: .4;}
+:root{
+    --columns: repeat(3, 1fr);
+    --rows: 100%;
+
+    --middle-column: 100%;
+    --middle-rows: repeat(2, 1fr);
+}
+
+.container{
+/*  Making sure the container 
+      takes up all the width 
+    and height of the viewport  
+*/
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+    
+/* Repeat 3 times 1 FRaction */
+    grid-template-columns: var(--columns);
+    grid-template-rows: var(--rows);
+
+/* Define grid area and name them */
+    grid-template-areas: 
+    "left middle right";
+}
+
+
+/*     Define the grid area 
+   container will be put in*/
+.left{
+    grid-area: left;
+    background: blue;
+}
+.middle{
+    grid-area: middle;
+
+/*   We can set up a grid 
+   inside of another grid  
+*/
+    display: grid;
+    grid-template-columns: var(--middle-column);
+    grid-template-rows: var(--middle-rows);
+
+/*  No template-areas here 
+because we keep the natural
+flow of our divs inside  */
+}
+.middle__one{background: pink;}
+.middle__two{background: turquoise;}
+.right{
+    grid-area: right;
+    background: green;
+}
+
+
+/* We resize for smaller screens:
+   @media(for screen with a max width of 1024px)
+*/
+@media (max-width:1024px){
+    :root{
+        --columns: 100%;
+        --rows: 10% 80% 10%;
+    }
+
+/* We simply change the container
+   grid template area to relocate
+   our different items inside  */
+   
+    .container{
+            grid-template-areas: 
+            "left" 
+            "middle"
+            "right";
+    }
+}
