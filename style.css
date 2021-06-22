@@ -1,0 +1,76 @@
+body{margin: 0; opacity: .4;}
+:root{
+    --columns: repeat(3, 1fr);
+    --rows: 100%;
+
+    --milieu-column: 100%;
+    --milieu-rows: repeat(2, 1fr);
+}
+
+.container{
+/* On s'assure que le "container"
+   fais bien toute la largeur et
+   toute la hauteur de la page */
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+/* Repetez 3 fois 1 FRaction */
+    grid-template-columns: var(--columns);
+    grid-template-rows: var(--rows);
+
+/* Definir les reperes de la grid */
+    grid-template-areas: 
+    "gauche milieu droite";
+}
+
+
+/*      Definir la zone de 
+placement de notre element */
+.gauche{
+    grid-area: gauche;
+    background: blue;
+}
+.milieu{
+    grid-area: milieu;
+
+/* On peut definir une grille à
+    l'intérieur d'une grille  */
+    display: grid;
+    grid-template-columns: var(--milieu-column);
+    grid-template-rows: var(--milieu-rows);
+
+/* Pas de template-area, nos elements
+    vont automatiquement prendre leurs 
+    places en fonction de leur ordre
+    dans l'HTML 
+*/
+}
+.milieu_un{background: pink;}
+.milieu_deux{background: turquoise;}
+.droite{
+    grid-area: droite;
+    background: green;
+}
+
+
+/* On adapte pour les plus petits écrans:
+   @media(pour les écrans qui font AU MAXIMUM:1024px)
+*/
+@media (max-width:1024px){
+    :root{
+        --columns: 100%;
+        --rows: 10% 80% 10%;
+    }
+
+/* On change simplement l'arrangement
+    des lignes et des colonnes dans 
+    notre container  
+*/
+    .container{
+            grid-template-areas: 
+            "gauche" 
+            "milieu"
+            "droite";
+    }
+}
