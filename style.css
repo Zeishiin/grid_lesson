@@ -1,7 +1,7 @@
 body{margin: 0; opacity: .4;}
 :root{
     --columns: repeat(3, 1fr);
-    --rows: 100%;
+    --rows: repeat(2, 1fr);
 
     --middle-column: 100%;
     --middle-rows: repeat(2, 1fr);
@@ -12,7 +12,6 @@ body{margin: 0; opacity: .4;}
       takes up all the width 
     and height of the viewport  
 */
-    width: 100%;
     height: 100vh;
 
     display: grid;
@@ -23,9 +22,9 @@ body{margin: 0; opacity: .4;}
 
 /* Define grid area and name them */
     grid-template-areas: 
-    "left middle right";
+    "left middle_one right"
+    "left middle_two right";
 }
-
 
 /*     Define the grid area 
    container will be put in*/
@@ -33,22 +32,9 @@ body{margin: 0; opacity: .4;}
     grid-area: left;
     background: blue;
 }
-.middle{
-    grid-area: middle;
 
-/*   We can set up a grid 
-   inside of another grid  
-*/
-    display: grid;
-    grid-template-columns: var(--middle-column);
-    grid-template-rows: var(--middle-rows);
-
-/*  No template-areas here 
-because we keep the natural
-flow of our divs inside  */
-}
-.middle__one{background: pink;}
-.middle__two{background: turquoise;}
+.middle__one{grid-area: middle_one;background: pink;}
+.middle__two{grid-area: middle_two;background: turquoise;}
 .right{
     grid-area: right;
     background: green;
@@ -61,7 +47,7 @@ flow of our divs inside  */
 @media (max-width:1024px){
     :root{
         --columns: 100%;
-        --rows: 10% 80% 10%;
+        --rows: 10% 40% 40% 10%;
     }
 
 /* We simply change the container
@@ -71,7 +57,8 @@ flow of our divs inside  */
     .container{
             grid-template-areas: 
             "left" 
-            "middle"
+            "middle_one"
+            "middle_two"
             "right";
     }
 }
